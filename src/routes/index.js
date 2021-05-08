@@ -1,24 +1,29 @@
 const { Router } = require('express')
 const { StatusCodes } = require('http-status-codes')
 
-// const Judge = require('../clients/Judge')
+const Codeforces = require('../clients/Codeforces')
 
 const routes = Router()
-// const judge = new Judge()
+const codeforces = new Codeforces()
 
 routes.use('/users/:user/submissions', async (req, res) => {
   const { user } = req.params
-  // try {
-  //   const submissions = await judge.submissions(user)
-  //   res.status(StatusCodes.OK).json(submissions)
-  // } catch (err) {
-  //   res
-  //     .status(StatusCodes.INTERNAL_SERVER_ERROR)
-  //     .json({ message: 'Internal server error' })
-  // }
-  res
-    .status(StatusCodes.NOT_IMPLEMENTED)
-    .json({ message: 'Not implemented yet' })
+  try {
+    const submissions = await codeforces.submissions(user)
+    return res.status(StatusCodes.OK).json(
+      submissions.map(
+        ({ verdict, creationTimeSeconds, problem: { contestId, index } }) => ({
+          id: `codeforces_${contestId}/${index}`,
+          momentInSeconds: creationTimeSeconds,
+          verdict: verdict === 'OK' ? 'SOLVED' : 'TRIED',
+        })
+      )
+    )
+  } catch (err) {
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: 'Internal server error' })
+  }
 })
 
 module.exports = routes

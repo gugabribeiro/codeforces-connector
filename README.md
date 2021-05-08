@@ -1,18 +1,18 @@
-# Judge Connector
+# Codeforces Connector
 
-This is a template project to facilitate the implementation of a new Judge Connector following the Judge Integration Protocol (JIP)
+Codeforces Connector following the JIP (Judge Integration Protocol)
 
-You will need to implement the following REST routes:
+The following REST routes are available:
 
 ```
 GET /users/:user/submissions
 ```
 
-Pay attention for the fact that the response of the above route should follow this pattern:
+Response:
 
 ```json
 {
-  "problemId": "judge_problemId",
+  "problemId": "codeforces_contestId/index",
   "momentInSeconds": "long",
   "verdict": "enumeration of (SOLVED, TRIED)"
 }
