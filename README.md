@@ -4,6 +4,8 @@ Codeforces Connector following the JIP (Judge Integration Protocol)
 
 The following REST routes are available:
 
+## Problems
+
 Request:
 
 ```
@@ -21,6 +23,8 @@ Response:
 }
 ```
 
+## Redirect to problem page
+
 Request:
 
 ```
@@ -32,6 +36,8 @@ Response:
 ```
 Redirect to codeforces problem
 ```
+
+## User profile
 
 Request:
 
@@ -47,6 +53,8 @@ Response:
   "level": "number"
 }
 ```
+
+## User submissions
 
 Request:
 
