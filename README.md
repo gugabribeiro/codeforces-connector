@@ -24,7 +24,7 @@ Response:
 Request:
 
 ```
-GET /problems/redirect/:id
+GET /problems/:problemId/redirect
 ```
 
 Response:

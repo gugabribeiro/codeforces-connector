@@ -6,9 +6,9 @@ const Codeforces = require('../clients/Codeforces')
 const routes = Router()
 const codeforces = new Codeforces()
 
-routes.get('/problems/redirect/:id', (req, res) => {
-  const { id } = req.params
-  const [_, problem] = id.split('_')
+routes.get('/problems/:problemId/redirect', (req, res) => {
+  const { problemId } = req.params
+  const [_, problem] = problemId.split('_')
   const [contestId, index] = problem.split('-')
   res
     .status(StatusCodes.MOVED_TEMPORARILY)
