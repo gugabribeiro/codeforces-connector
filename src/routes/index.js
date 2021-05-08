@@ -10,9 +10,9 @@ routes.get('/problems/:problemId/redirect', (req, res) => {
   const { problemId } = req.params
   const [_, problem] = problemId.split('_')
   const [contestId, index] = problem.split('-')
-  res
-    .status(StatusCodes.MOVED_TEMPORARILY)
-    .redirect(`https://codeforces.com/problemset/problem/${contestId}/${index}`)
+  res.status(StatusCodes.MOVED_TEMPORARILY).send({
+    url: `https://codeforces.com/problemset/problem/${contestId}/${index}`,
+  })
 })
 
 routes.get('/problems', async (_, res) => {
