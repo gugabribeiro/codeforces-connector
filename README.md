@@ -68,6 +68,6 @@ Response:
 {
   "problemId": "codeforces_{contestId}-{index}",
   "momentInSeconds": "long",
-  "verdict": "enumeration of (SOLVED, TRIED)"
+  "status": "enumeration of (SOLVED, TRIED)"
 }
 ```
