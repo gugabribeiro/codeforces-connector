@@ -29,7 +29,7 @@ routes.get('/users/:user/submissions', async (req, res) => {
     return res.status(StatusCodes.OK).json(
       submissions.map(
         ({ verdict, creationTimeSeconds, problem: { contestId, index } }) => ({
-          id: `codeforces_${contestId}/${index}`,
+          id: `codeforces_${contestId}${index}`,
           momentInSeconds: creationTimeSeconds,
           verdict: verdict === 'OK' ? 'SOLVED' : 'TRIED',
         })
