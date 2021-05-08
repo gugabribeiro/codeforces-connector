@@ -6,7 +6,23 @@ const Codeforces = require('../clients/Codeforces')
 const routes = Router()
 const codeforces = new Codeforces()
 
-routes.use('/users/:user/submissions', async (req, res) => {
+routes.get('/users/:user', async (req, res) => {
+  const { user } = req.params
+  try {
+    const { handle, rating } = await codeforces.profile(user)
+    return res.status(StatusCodes.OK).json({
+      name: handle,
+      level: rating || 0,
+    })
+  } catch (err) {
+    console.error(err)
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: 'Internal server error' })
+  }
+})
+
+routes.get('/users/:user/submissions', async (req, res) => {
   const { user } = req.params
   try {
     const submissions = await codeforces.submissions(user)
@@ -20,6 +36,7 @@ routes.use('/users/:user/submissions', async (req, res) => {
       )
     )
   } catch (err) {
+    console.error(err)
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ message: 'Internal server error' })
