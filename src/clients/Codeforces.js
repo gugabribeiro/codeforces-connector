@@ -1,7 +1,7 @@
 const http = require('axios')
 
 const FROM = 1
-const COUNT = 1000
+const COUNT = 1000000
 
 class Codeforces {
   problems() {
