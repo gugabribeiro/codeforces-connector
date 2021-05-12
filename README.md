@@ -1,6 +1,6 @@
 # Codeforces Connector
 
-Codeforces Connector following the JIP (Judge Integration Protocol)
+Codeforces Connector following the OJIP (Online Judge Integration Protocol)
 
 The following REST routes are available:
 
@@ -21,20 +21,6 @@ Response:
   "level": "number",
   "topics": ["string"]
 }
-```
-
-## Redirect to problem page
-
-Request:
-
-```
-GET /problems/:problemId/redirect
-```
-
-Response:
-
-```
-Redirect to codeforces problem
 ```
 
 ## User profile
